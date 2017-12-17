@@ -1,0 +1,194 @@
+﻿@using SurfacePlot.Models;
+@using SurfacePlot.ViewModels;
+@model HomeViewModel
+    
+@{
+    ViewBag.Title = "SurfacePlot";
+} 
+
+@using (Html.BeginForm())
+{
+    <div class="row" style="margin-top:20px;">
+        <div class="col-md-2 col-md-offset-1">
+            <label class="datasliderlabel">n(x)</label>
+            <input type="range" name="Xn" id="Xn" min="0" max="100" value="@Model.Xn" />
+            <label id="lbl_Xn" class="slidervalue">@Model.Xn</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">min(x)</label>
+            <input type="range" name="XMin" id="XMin" min="-500" max="500" value="@Model.XMin" />
+            <label id="lbl_XMin" class="slidervalue">@Model.XMin</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">step(x)</label>
+            <input type="range" name="XStep" id="XStep" min="0" max="100" value="@Model.XStep" />
+            <label id="lbl_XStep" class="slidervalue">@Model.XStep</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            <label class="datasliderlabel">n(y)</label>
+            <input type="range" name="Yn" id="Yn" min="0" max="100" value="@Model.Yn" />
+            <label id="lbl_Yn" class="slidervalue">@Model.Yn</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">min(y)</label>
+            <input type="range" name="YMin" id="YMin" min="-500" max="500" value="@Model.YMin" />
+            <label id="lbl_YMin" class="slidervalue">@Model.YMin</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">step(y)</label>
+            <input type="range" name="YStep" id="YStep" min="0" max="100" value="@Model.YStep" />
+            <label id="lbl_YStep" class="slidervalue">@Model.YStep</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            <label class="datasliderlabel">low bound(z)</label>
+            <input type="range" name="ZLowerBound" id="ZLowerBound" min="-500" max="0" value="@Model.ZLowerBound" />
+            <label id="lbl_ZLowerBound" class="slidervalue">@Model.ZLowerBound</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">hi bound(z)</label>
+            <input type="range" name="ZUpperBound" id="ZUpperBound" min="0" max="1000" value="@Model.ZUpperBound" />
+            <label id="lbl_ZUpperBound" class="slidervalue">@Model.ZUpperBound</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">Smooth#</label>
+            <input type="range" name="SmoothRounds" id="SmoothRounds" min="0" max="100" value="@Model.SmoothRounds" />
+            <label id="lbl_SmoothRounds" class="slidervalue">@Model.SmoothRounds</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">Averaging</label>
+            <input type="range" name="AveragingCoeff" id="AveragingCoeff" min="0" max="1" step="0.01" value="@Model.AveragingCoeff" />
+            <label id="lbl_AveragingCoeff" class="slidervalue">@Model.AveragingCoeff</label>
+        </div>
+        <div class="col-md-2">
+            <label class="datasliderlabel">Compression</label>
+            <input type="range" name="CompressCoeff" id="CompressCoeff" min="0" max="1" step="0.01" value="@Model.CompressCoeff" />
+            <label id="lbl_CompressCoeff" class="slidervalue">@Model.CompressCoeff</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-2 col-md-offset-1">
+            <label class="viewsliderlabel">plot size(x)</label>
+            <input type="range" name="PlotSizeX" id="PlotSizeX" min="0" max="2000" value="@Model.PlotSizeX" />
+            <label id="lbl_PlotSizeX" class="slidervalue">@Model.PlotSizeX</label>
+        </div>
+        <div class="col-md-2">
+            <label class="viewsliderlabel">plot size(y)</label>
+            <input type="range" name="PlotSizeY" id="PlotSizeY" min="0" max="2000" value="@Model.PlotSizeY" />
+            <label id="lbl_PlotSizeY" class="slidervalue">@Model.PlotSizeY</label>
+        </div>
+        <div class="col-md-2">
+            <label class="viewsliderlabel">x View Angle</label>
+            <input type="range" name="ViewingAngleX" id="ViewingAngleX" min="-1.57" max="0" step="0.01" value="@Model.ViewingAngleX" />
+            <label id="lbl_ViewingAngleX" class="slidervalue">@Model.ViewingAngleX</label>
+        </div>
+        <div class="col-md-2">
+            <label class="viewsliderlabel">y View Angle</label>
+            <input type="range" name="ViewingAngleY" id="ViewingAngleY" min="0" max="1.57" step="0.01" value="@Model.ViewingAngleY" />
+            <label id="lbl_ViewingAngleY" class="slidervalue">@Model.ViewingAngleY</label>
+        </div>
+        <div class="col-md-2">
+            <label class="viewsliderlabel">z View Angle</label>
+            <input type="range" name="ViewingAngleZ" id="ViewingAngleZ" min="0" max="1.57" step="0.01" value="@Model.ViewingAngleZ" />
+            <label id="lbl_ViewingAngleZ" class="slidervalue">@Model.ViewingAngleZ</label>
+        </div>
+    </div>
+     <div class="row">
+        <div class="col-md-2 col-md-offset-4">
+             <input type="submit" formaction="/Home/Draw" class="btn btn-success" value="Draw A New Surface" />
+         </div>
+         <div class="col-md-2">
+             <input type="submit" formaction="/Home/ReDraw" class="btn btn-info" value="ReDraw This Surface" />
+         </div>
+    </div>
+ }
+
+<div>
+    @Html.Raw(Model.Svg)
+</div>
+
+
+<script>
+    $('#CompressCoeff').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_CompressCoeff').text(current);
+    });
+
+    $('#PlotSizeX').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_PlotSizeX').text(current);
+    });
+
+    $('#PlotSizeY').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_PlotSizeY').text(current);
+    });
+
+    $('#SmoothRounds').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_SmoothRounds').text(current);
+    });
+
+    $('#AveragingCoeff').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_AveragingCoeff').text(current);
+    });
+
+    $('#ViewingAngleX').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_ViewingAngleX').text(current);
+    });
+
+    $('#ViewingAngleY').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_ViewingAngleY').text(current);
+    });
+
+    $('#ViewingAngleZ').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_ViewingAngleZ').text(current);
+    });
+
+    $('#XMin').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_XMin').text(current);
+    });
+
+    $('#Xn').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_Xn').text(current);
+    });
+
+    $('#XStep').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_XStep').text(current);
+    });
+
+    $('#YMin').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_YMin').text(current);
+    });
+
+    $('#Yn').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_Yn').text(current);
+    });
+
+    $('#YStep').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_YStep').text(current);
+    });
+
+    $('#ZLowerBound').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_ZLowerBound').text(current);
+    });
+
+    $('#ZUpperBound').on("input change", function () {
+        var current = $(this).val();
+        $('#lbl_ZUpperBound').text(current);
+    });
+</script>
