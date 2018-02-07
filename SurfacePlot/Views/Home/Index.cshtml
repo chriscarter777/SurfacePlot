@@ -101,7 +101,7 @@
              <input type="submit" formaction="/Home/Draw" class="btn btn-success" value="Draw A New Surface" />
          </div>
          <div class="col-md-2">
-             <input type="submit" formaction="/Home/ReDraw" class="btn btn-info" value="ReDraw This Surface" />
+             <input type="submit" formaction="/Home/ReDraw" class="btn btn-info" id="redraw" value="ReDraw This Surface" />
          </div>
     </div>
  }
@@ -115,6 +115,7 @@
     $('#CompressCoeff').on("input change", function () {
         var current = $(this).val();
         $('#lbl_CompressCoeff').text(current);
+        $('#redraw').attr('disabled', true);
     });
 
     $('#PlotSizeX').on("input change", function () {
@@ -130,11 +131,13 @@
     $('#SmoothRounds').on("input change", function () {
         var current = $(this).val();
         $('#lbl_SmoothRounds').text(current);
+        $('#redraw').attr('disabled', true);
     });
 
     $('#AveragingCoeff').on("input change", function () {
         var current = $(this).val();
         $('#lbl_AveragingCoeff').text(current);
+        $('#redraw').attr('disabled', true);
     });
 
     $('#ViewingAngleX').on("input change", function () {
@@ -155,40 +158,48 @@
     $('#XMin').on("input change", function () {
         var current = $(this).val();
         $('#lbl_XMin').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 
     $('#Xn').on("input change", function () {
         var current = $(this).val();
         $('#lbl_Xn').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 
     $('#XStep').on("input change", function () {
         var current = $(this).val();
         $('#lbl_XStep').text(current);
+        $('#redraw').attr('disabled', true);
     });
 
     $('#YMin').on("input change", function () {
         var current = $(this).val();
         $('#lbl_YMin').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 
     $('#Yn').on("input change", function () {
         var current = $(this).val();
         $('#lbl_Yn').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 
     $('#YStep').on("input change", function () {
         var current = $(this).val();
         $('#lbl_YStep').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 
     $('#ZLowerBound').on("input change", function () {
         var current = $(this).val();
         $('#lbl_ZLowerBound').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 
     $('#ZUpperBound').on("input change", function () {
         var current = $(this).val();
         $('#lbl_ZUpperBound').text(current);
-    });
+        $('#redraw').attr('disabled', true);
+   });
 </script>
