@@ -1,0 +1,6 @@
+# SurfacePlot
+A <b>data visualization<b> tool which creates random three-dimensional surfaces with user-defined parameters,
+<br>
+then plots them in rotatable and zoomable 3-space.
+<br>
+&copy; Christopher Carter 2018
